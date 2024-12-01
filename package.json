@@ -7,5 +7,20 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --sourcemap",
+    "test": "bun run ./dist/tests/index.test.js",
+    "watch": "bun build --target=bun src/index.ts --outdir dist --sourcemap --watch",
+    "dev": "bun run --watch dist/index.js",
+    "lint": "eslint src/**/*.ts",
+    "start": "bun dist/index.js",
+    "migration-generate": "bun exec typeorm migration:generate -d './dist/datasource.js'",
+    "migration-create": "bun exec typeorm migration:create"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "buffer": "^6.0.3",
+    "express": "^4.21.1"
   }
 }
